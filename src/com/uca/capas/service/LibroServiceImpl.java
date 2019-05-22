@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class LibroServiceImpl implements LibroService{
 	public List<Libro> findSome(String code, String type) throws DataAccessException {
 		List<Libro> resultSet = libroDao.findSome(code, type);
 		return resultSet;
+	}
+
+	@Override
+	public BigInteger count() throws DataAccessException {
+		BigInteger n = libroDao.count();
+		return n;
 	}
 
 }

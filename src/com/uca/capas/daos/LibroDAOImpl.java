@@ -1,5 +1,6 @@
 package com.uca.capas.daos;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -53,6 +54,15 @@ public class LibroDAOImpl implements LibroDAO {
 		List<Libro> resultSet = query.getResultList();
 		
 		return resultSet;
+	}
+
+	@Override
+	public BigInteger count() throws DataAccessException {
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT COUNT(DISTINCT AUTOR) FROM public.libro;");
+		Query query = em.createNativeQuery(sb.toString());
+		BigInteger n = (BigInteger) query.getSingleResult();
+		return n;
 	}
 
 }

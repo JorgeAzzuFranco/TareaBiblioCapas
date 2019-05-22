@@ -1,5 +1,6 @@
 package com.uca.capas.controller;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,9 +73,10 @@ public class MainController {
 		}
 		
 		int num = libros.size();
+		BigInteger n = libroService.count();
 		
 		String titulo = "Se han encontrado " + num + 
-		" resultados en todos";
+		" resultados de " + n + " autores ";
 		
 		mav.addObject("titulo", titulo);
 		mav.addObject("lib", libros);
